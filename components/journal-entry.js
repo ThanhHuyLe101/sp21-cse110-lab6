@@ -1,5 +1,5 @@
 // <journal-entry> custom web component
-class JournalEntry extends HTMLElement {
+export class JournalEntry extends HTMLElement {
   constructor() {
     super();
 
@@ -73,6 +73,43 @@ class JournalEntry extends HTMLElement {
      */
     
     // CODE GOES HERE
+    // entry.title
+    //console.log('set is run');
+    // var entryTitle = document.querySelector("input[article='entry']")[0];
+    // var entryDate = document.querySelector("input[article='entry']")[1];
+    // var entryContent = document.querySelector("input[article='entry']")[2];
+
+    // entry.setAttribute('title', entryTitle);
+
+    //console.log(this);
+    // console.log(entry['title']);
+
+    //this.getElementsByTagName('journal-entry').innerHTML ="FUck";
+    //this.querySelectorAll(".article entry")[0].namedItem = entry.title;
+    //this.getElementsByTagName('journal-entry').innerHTML = "HELLO";
+
+    //this.shadowRoot.getElementsByClassName("entry-title").value = entry.title;
+
+    //this.shadowRoot.("entry-title").value - entry.title;
+    //console.log(this.getElementsByClassName("entry-title").value);
+
+
+    //var para = document.createElement('h');
+    //para.innerHTML = entry.title;
+    //this.shadowRoot.appendChild(para);
+    //this.shadowRoot.appendChild(entry.innerHTML.cloneNode(true));
+    //this.template.getElementsByClassName("entry-title").content = entry.title;
+
+    //this.shadowRoot.childNodes[0].textContent
+  
+    this.shadowRoot.children[1].children[0].innerText = entry.title;
+    this.shadowRoot.children[1].children[1].innerText = entry.date;
+    this.shadowRoot.children[1].children[2].innerText = entry.content;
+
+
+    //debugger;
+    
+    
 
     if (entry.image) {
       let entryImage;
@@ -85,8 +122,12 @@ class JournalEntry extends HTMLElement {
 
       // CODE GOES HERE vvv
 
+      entryImage = document.createElement("IMG");
+      entryImage.setAttribute('class', 'entry-image');
+      entryImage.src = entry.image.src;
+      entryImage.alt = entry.image.alt;
 
-
+      this.shadowRoot.children[1].appendChild(entryImage);
 
 
       // CODE GOES HERE ^^^
@@ -111,8 +152,12 @@ class JournalEntry extends HTMLElement {
 
       // CODE GOES HERE vvv
 
-
-
+      //entryAudio = new Audio();
+      entryAudio = document.createElement("AUDIO");
+      entryAudio.setAttribute('class',"entry-audio");
+      entryAudio.src = entry.audio;
+      entryAudio.controls=true;
+      this.shadowRoot.children[1].appendChild(entryAudio);
 
 
 
@@ -164,7 +209,6 @@ customElements.define('journal-entry', JournalEntry);
  *   audio: 'foo.com/bar.mp3'
  * }
  */
-
 
 
 
