@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(entries => {
       entries.forEach((entry) => {
        
-        let newPost = document.createElement('journal-entry');;  
+        let newPost = document.createElement('journal-entry');  
 
 
         // CODE GOES HERE vvv
